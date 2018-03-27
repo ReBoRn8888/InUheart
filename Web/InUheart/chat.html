@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>在你心理</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="css/style_chat.css">
+        <meta name="Author" content="Longbill" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>  -->
+        <script type="text/javascript" src="js/jquery.qqFace.js"></script>
+        <script type="text/javascript" src="js/chat.js"></script>
+        <script>
+        function init_window()
+        {
+            $('#main').height($(window).height()-$('#header').height());
+            $('#content').width($('#chat_window').width()-$('#disconnectwrapper').width()*2-6);    
+            
+            var space = 100;
+            if (navigator.userAgent.match(/msie\s7/i)) space = 50;
+            if (navigator.userAgent.match(/msie\s6/i)) space = 50;
+    
+            $('#chat_window').height($(window).height()-$('#header').height()-$('#content').height()-space);
+        }
+        init_window();
+        window.onresize = init_window;
+        var lang = 
+        {
+            send_error:'发送失败',
+            bye:'Bye!',
+            online_num:'在线人数：',
+            waiting:'等待陌生人连接...',
+            me:'<span style="color:#333">我：</span>',
+            stranger:'<span style="color:#333">对方：</span>',
+            connected:'<span style="color:orange">连接成功，快跟对方打个招呼吧！</span>',
+            disconnected:'对方已断开。',
+            typing:'<span style="font-size:12px;color:#999">对方正在输入文字</span>',
+            reconnect:'重新连接',
+            download:'下载聊天记录',
+            logining:'登录中..',
+            logined:'登录成功',
+            you_disconnect:'您已经断开',
+            contact_me:'&nbsp;<a href="" target="_blank"></a>',
+            new_msg:'新消息来啦！'
+        };
+        var ajax_delay = 1000; //ms
+
+        function home(){
+            location.href="judge.php";
+        }
+        </script>
+        <style type="text/css">
+            .qqFace { margin-top: 4px; background: #fff; padding: 2px; border: 1px #dfe6f6 solid; }
+            .qqFace table td { padding: 0px; }
+            .qqFace table td img { cursor: pointer; border: 1px #fff solid; }
+            .qqFace table td img:hover { border: 1px #0066cc solid; }
+            .emotion{
+                float: middle;
+                margin-left: 130px;
+                background-image:url("arclist/face.png");
+                height: 25px;
+                width: 25px;
+            } 
+            .emotion:hover{
+                float: middle;
+                margin-left: 130px;
+                background-image:url("arclist/face_hover.png");
+                height: 25px;
+                width: 25px;
+            }
+        </style>
+    </head>
+    <body scroll="no">
+        <div id="header">
+            <div id="header_content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td><a href="judge.php"><img id="logo"  src="images/logo.jpg"/></a></td>
+                        <td>
+                        </td>
+                        <td style="text-align:right" valign="middle">
+                            在线人数：<span id="online_num"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+        <div id="main">
+            <div id="description">
+                <div style="width:600px;margin:0 auto;text-align:center;">
+                    <div style="height:400px;float:left; width:300px;">
+                        <img src="images/taibei.jpg" />
+                    </div>
+                    <div style="height:400px;float:left; width:230px;">
+                        <div style="margin-top:70px;">
+                            <img src="images/title.jpg" />
+                        </div>
+                        <div style="margin:20px 0;margin-bottom:40px;">
+                            <a href="javascript:init_chat();"><img src="images/start.jpg" /></a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div id="announcement">
+                    
+                    <!-- <a href="http://longbill.cn" target="_blank">By Longbill</a> -->
+                    
+                </div>
+            </div>
+            <div id="chat" style="display:none">
+                <div id="chat_window">
+                </div>
+                <div id="chat_bottom">
+                    <div class="emotion"></div>
+                    <div id="disconnectwrapper" onclick="disconnect()">
+                        断开
+                    </div>
+                    <!-- <span class="emotion">表情</span> -->
+                    <textarea id="content" ></textarea>
+                    <div id="sendwrapper" onclick="send_bt()" >
+                        发送
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){ 
+                $('.emotion').qqFace({ 
+                    assign:'content', //给输入框赋值 
+                    path:'arclist/'    //表情图片存放的路径 
+                }); 
+            });
+        </script>
+    </body>
+</html>

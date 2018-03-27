@@ -1,0 +1,10 @@
+（一）数据库的基本信息修改位置
+1、修改数据库的URL以及DataBaseName在DBAccess()类中的connectDB()。
+2、修改登录数据库的用户名和密码在DBAccessManger()中的connDB()。
+（二）数据库实例化
+1、连接数据库用的方法是DbAccessManger()类 。该方法为static变量，因网页加载时就执行了数据库实例化语句，理论上不需要在后续Action中写。
+	     实例化语句为：DbAccessManger mms=DbAccessManger.getInstance();
+ （三）各DbAccessManger的方法作用已在Implement中已有注释。
+ （四）错误处理
+ 1、返回为""则表示执行成功，    否则返回Catch的错误信息。其中特殊execSql()方法，返回的List中，Index=0中的String[0]=AAAAASSSSDDDDFFGGHHJKLL:::时，String[1]储存报错信息。
+ 2、getMaxValue()因不常用，因此未设置报错信息。

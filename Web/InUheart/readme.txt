@@ -1,12 +1,4 @@
-EndTalk 匿名聊天系统
-作者: Longbill
-网站: http://php.js.cn
-在线演示: http://talk.longbill.cn
-免费开源，任意使用
-
-简介: EndTalk 是一个类似omegle.com的在线匿名聊天系统。 
-
-功能:
+﻿功能:
 1.匿名用户配对聊天
 2.聊天记录可以下载
 3.可以显示对方输入状态

@@ -1,2 +1,2 @@
 # InUheart
- Including an Android application and a ebsite
+ Including an Android application and a website
